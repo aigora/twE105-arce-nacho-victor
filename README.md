@@ -2,9 +2,9 @@
 INVENTARIO
 
 ## Integrantes del equipo
--Victor Caparros Levin
--Ignacio Dorado Ruiz
--Ángel Luis Arce Carrasco
+-@victorcaparros98
+-@idorado2019
+-@angelluisarcecarrasco96
 
 ## Objetivos del trabajo
 
