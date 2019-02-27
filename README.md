@@ -2,9 +2,9 @@
 INVENTARIO
 
 ## Integrantes del equipo
--@victorcaparros98
--@idorado2019
--@angelluisarcecarrasco96
+- @victorcaparros98
+- @idorado2019
+- @angelluisarcecarrasco96
 
 ## Objetivos del trabajo
 
