@@ -1,11 +1,11 @@
 # Título del trabajo
-
-Descripción breve del proyecto a realizar (2-3 frases).
+INVENTARIO
 
 ## Integrantes del equipo
-
-Nombres, apellidos, y usuario GitHub de los integrantes del equipo.
+-Victor Caparros Levin
+-Ignacio Dorado Ruiz
+-Ángel Luis Arce Carrasco
 
 ## Objetivos del trabajo
 
-Lista de los objetivos que se persiguen con el trabajo propuesto.
+Realizar un trabajo que cumpla los requisitos para poder obetener una nota acorde con el trabajo
