@@ -1,5 +1,5 @@
 # Título del trabajo
-INVENTARIO
+RASTRIVAGO
 
 ## Integrantes del equipo
 - @victorcaparros98
