@@ -1,10 +1,53 @@
 #include <stdio.h>
 #include <string.h>
+#define NUMCASAS 5000
 
+//ESTRUCTURAS
+struct precios {
 
+	float Wifi;
+	float Piscina;
+	float TipoCasa[2];
+	float Ubicacion[3];
+	float MultiplicadorPorTemporada[4];
+	float Valoracion[5];
+	};
+	struct caracteristica {
+
+	int tipoDeCasa;
+	int piscina;
+	int ubicacion;
+	int wifi;
+	int numeroDeHabitaciones;
+	int valoracion;
+	float precioBasePorDia;
+	int indiceCiudad;
+	int alquilada; // 0 = No, 1 = Si
+
+};
+
+struct filtros {
+	int temporada;
+	int tipoDeCasa;
+	int piscina;
+	int ubicacion;
+	int wifi;
+	int numeroDeHabitaciones;
+	int valoracion;
+	char ciudadBuscada[15];//a lo mejor hay que quitar esto porque está definida igual tambien en el main
+};
+	
+	
+	
+	
+	
 int main() {
 
-	
+	//ESTRUCTURAS 
+	struct precios NuestrosPreciosPorDia;
+	struct caracteristica casaAAlquilar[NUMCASAS];
+	struct filtros casaBuscada;
+
 
 	//VARIABLES
 
@@ -46,15 +89,15 @@ int main() {
 							
 							printf("\n\n¿Qué ciudad desea visitar? Elija entre opciones como:\n\n");
 							printf("\tVigo\t\tSantander\n\tGijón\n");
-								scanf("%s", ciudadBuscada);
+								scanf(" %s", ciudadBuscada);
 								
 								break;
 								
 					case 'M':
 						case 'm':
 							printf("\n\n¿Qué ciudad desea visitar? Elija entre opciones como:\n\n");
-							printf("\tBarcelona\t\n\tValencia\tMálaga\ntAlicante\tMallorca\n");
-							scanf("%s", ciudadBuscada);
+							printf("\tBarcelona\t\n\tValencia\tMálaga\tAlicante\tMallorca\n");
+							scanf(" %s", ciudadBuscada);
 							
 							break;
 							
@@ -63,7 +106,7 @@ int main() {
 							
 							printf("\n\n¿Qué ciudad desea visitar? Elija entre opciones como:\n\n");
 							printf("\tCádiz\tHuelva\n\n");
-							scanf("%s", ciudadBuscada);
+							scanf(" %s", ciudadBuscada);
 							
 							break;
 							
