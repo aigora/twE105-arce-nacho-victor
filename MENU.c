@@ -34,7 +34,7 @@ struct filtros {
 	int wifi;
 	int numeroDeHabitaciones;
 	int valoracion;
-	char ciudadBuscada[15];//a lo mejor hay que quitar esto porque est· definida igual tambien en el main
+	char ciudadBuscada[15];//a lo mejor hay que quitar esto porque est√° definida igual tambien en el main
 };
 	
 	
@@ -64,14 +64,14 @@ int main() {
 
 			
 			printf("\t\tBIENVENIDOS A NUESTRO PORTAL DE VIVIENDAS\n");
-			printf("\n\t\t\t    -- MEN⁄ PRINCIPAL DE RASTRIVAGO --\n\n\n\n");
-			printf("\tPara elegir opciÛn, pulse:\n\n");
+			printf("\n\t\t\t    -- MEN√ö PRINCIPAL DE RASTRIVAGO --\n\n\n\n");
+			printf("\tPara elegir opci√≥n, pulse:\n\n");
 			printf("\t  1  -  ALQUILAR.\n\n");
-			printf("\t  2  -  VER CAT¡LOGO DE APARTAMENTOS.\n\n");
+			printf("\t  2  -  VER CAT√ÅLOGO DE APARTAMENTOS.\n\n");
 			printf("\t  3  -  SALIR.\n");
 			scanf("%c", &opcion);
 
-			switch (opcion) {
+			switch (opcion) { //switch para menu principal
 			case '1':
 			
 
@@ -79,24 +79,24 @@ int main() {
 				do{
 				
 				
-				printf("Indique que desea: zona cant·brica (C),zona mediterr·nea (M), zona atlantica(A)\n ");
+				printf("Indique que desea: zona cant√°brica (C),zona mediterr√°nea (M), zona atlantica(A)\n ");
 				scanf("%c",&ubicacion);
 				
 				
-				switch (ubicacion){
+				switch (ubicacion){ //switch para el menu ubicacion
 					case 'C':
 					case'c':
 							
-							printf("\n\nøQuÈ ciudad desea visitar? Elija entre opciones como:\n\n");
-							printf("\tVigo\t\tSantander\n\tGijÛn\n");
+							printf("\n\n¬øQu√© ciudad desea visitar? Elija entre opciones como:\n\n");
+							printf("\tVigo\t\tSantander\n\tGij√≥n\n");
 								scanf(" %s", ciudadBuscada);
 								
 								break;
 								
 					case 'M':
 						case 'm':
-							printf("\n\nøQuÈ ciudad desea visitar? Elija entre opciones como:\n\n");
-							printf("\tBarcelona\t\n\tValencia\tM·laga\tAlicante\tMallorca\n");
+							printf("\n\n¬øQu√© ciudad desea visitar? Elija entre opciones como:\n\n");
+							printf("\tBarcelona\t\n\tValencia\tM√°laga\tAlicante\tMallorca\n");
 							scanf(" %s", ciudadBuscada);
 							
 							break;
@@ -104,8 +104,8 @@ int main() {
 					case 'A':
 						case 'a':
 							
-							printf("\n\nøQuÈ ciudad desea visitar? Elija entre opciones como:\n\n");
-							printf("\tC·diz\tHuelva\n\n");
+							printf("\n\n¬øQu√© ciudad desea visitar? Elija entre opciones como:\n\n");
+							printf("\tC√°diz\tHuelva\n\n");
 							scanf(" %s", ciudadBuscada);
 							
 							break;
@@ -132,7 +132,7 @@ int main() {
 			
 				
 				printf("\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n");
-				printf("\n\t\t\t    -- Cat·logo de apartamentos --\n\n\n");
+				printf("\n\t\t\t    -- Cat√°logo de apartamentos --\n\n\n");
 			
 
 			default:
