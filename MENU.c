@@ -90,7 +90,7 @@ int main() {
 							printf("\n\n¿Qué ciudad desea visitar? Elija entre opciones como:\n\n");
 							printf("\tVigo\t\tSantander\n\tGijón\n");
 								scanf(" %s", ciudadBuscada);
-								
+								    
 								break;
 								
 					case 'M':
