@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#define NUMCASAS 5000
+#define NUMCASAS 5000    
 
 //ESTRUCTURAS
 struct precios {
@@ -60,7 +60,7 @@ int main() {
 	
 	
 
-	do {
+	do { //bucle do-while inicial
 
 			
 			printf("\t\tBIENVENIDOS A NUESTRO PORTAL DE VIVIENDAS\n");
