@@ -71,7 +71,7 @@ int main() {
 			printf("\t  3  -  SALIR.\n");
 			scanf("%c", &opcion);
 
-			switch (opcion) { //switch para menu principal
+			switch (opcion) { //switch para  el menu principal
 			case '1':
 			
 
