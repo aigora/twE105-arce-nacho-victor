@@ -19,7 +19,7 @@ struct precios {
 	int ubicacion;
 	int wifi;
 	int numeroDeHabitaciones;
-	int valoracion;
+	int valoracion;      
 	float precioBasePorDia;
 	int indiceCiudad;
 	int alquilada; // 0 = No, 1 = Si
