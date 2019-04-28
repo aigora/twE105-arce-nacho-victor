@@ -1,6 +1,10 @@
+#define NUMCASAS 5000  
+#define NUMCIUDADES 9
+
 #include <stdio.h>
 #include <string.h>
-#define NUMCASAS 5000    
+#include <stdlib.h>
+#include <time.h>
 
 //ESTRUCTURAS
 struct precios {
@@ -36,6 +40,14 @@ struct filtros {
 	int valoracion;
 	char ciudadBuscada[15];//a lo mejor hay que quitar esto porque está definida igual tambien en el main
 };
+struct usuario {
+	char username[20];
+	char password[20]; //estructura usuario para la futura reserva
+};
+
+//Declaracion de funciones
+
+int existeUsuario(struct usuario usuarioValido, char username[], char password[]);
 	
 	
 	
@@ -47,13 +59,15 @@ int main() {
 	struct precios NuestrosPreciosPorDia;
 	struct caracteristica casaAAlquilar[NUMCASAS];
 	struct filtros casaBuscada;
+	struct usuario miUsuario = { "admin", "1234" };
 
 
 	//VARIABLES
 
 	
 	char opcion, ciudadBuscada[15], ubicacion;
-
+	char usernameIntroducido[20], passwordIntroducida[20];
+        int i, j, ciudadEncontrada = 0;
 
 
 
@@ -68,7 +82,7 @@ int main() {
 			printf("\tPara elegir opción, pulse:\n\n");
 			printf("\t  1  -  ALQUILAR.\n\n");
 			printf("\t  2  -  VER CATÁLOGO DE APARTAMENTOS.\n\n");
-			printf("\t  3  -  SALIR.\n");
+			printf("\t  3  -  REGISTRARSE.\n");
 			scanf("%c", &opcion);
 
 			switch (opcion) { //switch para  el menu principal
@@ -89,15 +103,31 @@ int main() {
 							
 							printf("\n\n¿Qué ciudad desea visitar? Elija entre opciones como:\n\n");
 							printf("\tVigo\t\tSantander\n\tGijón\n");
-								scanf(" %s", ciudadBuscada);
+							scanf(" %s", ciudadBuscada);
+						
+						        ciudadEncontrada = 0;
+			                                for (i = 0; i < NUMCIUDADES; i++) {
+				                        if (strcmp(ciudadBuscada, ciudad[i]) == 0) {
+					                ciudadEncontrada = 1;
+					                break;
+				                         }
+			                                }
 								    
-								break;
+						        break;
 								
 					case 'M':
 						case 'm':
 							printf("\n\n¿Qué ciudad desea visitar? Elija entre opciones como:\n\n");
 							printf("\tBarcelona\t\n\tValencia\tMálaga\tAlicante\tMallorca\n");
 							scanf(" %s", ciudadBuscada);
+				
+						        ciudadEncontrada = 0;
+			                                for (i = 0; i < NUMCIUDADES; i++) {
+				                        if (strcmp(ciudadBuscada, ciudad[i]) == 0) {
+					                ciudadEncontrada = 1;
+					                break;
+				                         }
+			                                }
 							
 							break;
 							
@@ -107,6 +137,14 @@ int main() {
 							printf("\n\n¿Qué ciudad desea visitar? Elija entre opciones como:\n\n");
 							printf("\tCádiz\tHuelva\n\n");
 							scanf(" %s", ciudadBuscada);
+						
+						        ciudadEncontrada = 0;
+			                                for (i = 0; i < NUMCIUDADES; i++) {
+				                        if (strcmp(ciudadBuscada, ciudad[i]) == 0) {
+					                ciudadEncontrada = 1;
+					                break;
+				                         }
+			                                }
 							
 							break;
 							
@@ -133,6 +171,26 @@ int main() {
 				
 				printf("\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n");
 				printf("\n\t\t\t    -- Catálogo de apartamentos --\n\n\n");
+				break;
+					
+			case '3':
+
+			for (j = 2; j >= 0; j--) {
+
+				if (existeUsuario(miUsuario, usernameIntroducido, passwordIntroducida) == 1) {
+
+				
+					break;
+				}
+				else {
+					printf("\nEl usuario o la contraseña introducidos no son válidos.\n");
+					printf("Tiene %d intentos restantes\n\n", j);
+				}
+			
+			}
+
+			break;
+
 			
 
 			default:
@@ -143,4 +201,23 @@ int main() {
 			
 			
 			
-				}	
+				}
+//Exposicion de las funciones 
+
+int existeUsuario(struct usuario usuarioValido, char username[], char password[]) {
+
+	printf("\nIntroduzca su usuario: ");
+	scanf("%s", username);
+	printf("\nIntroduzca su contraseña: ");
+	scanf("%s", password);
+	getchar();
+
+	if ((strcmp(password, usuarioValido.password) == 0) && (strcmp(username, usuarioValido.username) == 0)) {
+
+		return 1;
+	}
+	else {
+
+		return 0;
+	}
+}
