@@ -46,7 +46,7 @@ struct usuario {
 };
 
 //Declaracion de funciones
-
+int SeleccionaUbicacion(struct filtros *FiltrosDelUsuario);
 int existeUsuario(struct usuario usuarioValido, char username[], char password[]);
 	
 	
@@ -112,7 +112,11 @@ int main() {
 					                break;
 				                         }
 			                                }
-								    
+							if (ciudadEncontrada == 1) {
+	
+		
+				                        SeleccionaUbicacion(&casaBuscada);
+				
 						        break;
 								
 					case 'M':
@@ -210,7 +214,6 @@ int existeUsuario(struct usuario usuarioValido, char username[], char password[]
 	scanf("%s", username);
 	printf("\nIntroduzca su contraseña: ");
 	scanf("%s", password);
-	getchar();
 
 	if ((strcmp(password, usuarioValido.password) == 0) && (strcmp(username, usuarioValido.username) == 0)) {
 
@@ -220,4 +223,16 @@ int existeUsuario(struct usuario usuarioValido, char username[], char password[]
 
 		return 0;
 	}
+}
+
+
+int SeleccionaUbicacion(struct filtros *FiltrosDelUsuario) {
+
+	char opcionUbicacion, c;
+
+	do {
+
+		printf("¿Qué ubicación prefiere?:\n\n- Centrico (pulse C)\n\n- Costa (pulse O)\n\n- Alrededores (pulse A)\n\n");
+		scanf("%c", &opcionUbicacion);
+		
 }
