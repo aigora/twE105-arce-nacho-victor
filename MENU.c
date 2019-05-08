@@ -49,6 +49,11 @@ struct Tusuario {
 	char username[20];
 	char password[20];
 };
+//DECLARACIÓN DE FUNCIONES
+
+int  menu();
+
+
 void main() {
 
 	//PREMISAS
@@ -90,3 +95,68 @@ void main() {
 	precios.MultiplicadorPorTemporada[1] = 2;		// Verano
 	precios.MultiplicadorPorTemporada[2] = 1;		// Otoño
 	precios.MultiplicadorPorTemporada[3] = 0.75;	// Invierno
+	
+	do {
+
+		opcion = menu();
+
+		switch (opcion) {
+
+		case 'A':
+		case 'a':
+
+			printf("\n\n¿Qué ciudad desea visitar? Elija entre opciones como:\n\n");
+			printf("\tBarcelona\tVigo\t\tSantander\n\n\tValencia\tGijón\t\tMálaga\n\n\tAlicante\tMallorca\tCádiz\n\n");
+			scanf("%s", ciudadBuscada);
+			
+
+			break;
+
+		case 'V':
+		case 'v':
+
+			system("cls");
+			printf("\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n");
+			printf("\n\t\t\t    -- Catálogo de apartamentos --\n\n\n");
+			
+
+			break;
+
+		case 'R':
+		case 'r':
+
+			
+
+			break;
+
+		default:
+
+			break;
+		}
+
+	} while (opcion != 'S' && opcion != 's');
+
+	getchar();
+}
+
+
+
+//DESARROLLO DE LAS FUNCIONES
+
+int  menu() {
+
+	char op;
+
+	system("cls");
+	printf("\n\n\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n\n");
+	printf("\n\t\t\t    -- MENÚ PRINCIPAL DE TRIVATEATOR --\n\n\n\n");
+	printf("\tPara elegir opción, pulse:\n\n");
+	printf("\t  A  -  ALQUILAR.\n\n");
+	printf("\t  V  -  VER CATÁLOGO DE APARTAMENTOS.\n\n");
+	printf("\t  R  -  VER RESERVAS REALIZADAS DE APARTAMENTOS.\n\n");
+	printf("\t  S  -  SALIR.\n");
+	scanf("%c", &op);
+	getchar();
+
+	return op;
+}
