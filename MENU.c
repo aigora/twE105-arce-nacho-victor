@@ -42,17 +42,16 @@ struct Tfiltros {
 	int wifi;
 	int numeroDeHabitaciones;
 	int valoracion;
-	char ciudadBuscada[15];//a lo mejor hay que quitar esto porque est√É¬° definida igual tambien en el main
+	char ciudadBuscada[15];//a lo mejor hay que quitar esto porque est√° definida igual tambien en el main
 };
 
 struct Tusuario {
 	char username[20];
 	char password[20];
 };
-//DECLARACI√ìN DE FUNCIONES
+//DECLARACI”N DE FUNCIONES
 
 int  menu();
-int existeUsuario(struct Tusuario usuarioValido, char username[], char password[]);
 
 
 void main() {
@@ -94,7 +93,7 @@ void main() {
 	precios.Valoracion[4] = 1.5;
 	precios.MultiplicadorPorTemporada[0] = 1.25;	// Primavera
 	precios.MultiplicadorPorTemporada[1] = 2;		// Verano
-	precios.MultiplicadorPorTemporada[2] = 1;		// Oto√±o
+	precios.MultiplicadorPorTemporada[2] = 1;		// OtoÒo
 	precios.MultiplicadorPorTemporada[3] = 0.75;	// Invierno
 	
 	do {
@@ -106,8 +105,8 @@ void main() {
 		case 'A':
 		case 'a':
 
-			printf("\n\n¬øQu√© ciudad desea visitar? Elija entre opciones como:\n\n");
-			printf("\tBarcelona\tVigo\t\tSantander\n\n\tValencia\tGij√≥n\t\tM√°laga\n\n\tAlicante\tMallorca\tC√°diz\n\n");
+			printf("\n\nøQuÈ ciudad desea visitar? Elija entre opciones como:\n\n");
+			printf("\tBarcelona\tVigo\t\tSantander\n\n\tValencia\tGijÛn\t\tM·laga\n\n\tAlicante\tMallorca\tC·diz\n\n");
 			scanf("%s", ciudadBuscada);
 			
 
@@ -118,7 +117,7 @@ void main() {
 
 			system("cls");
 			printf("\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n");
-			printf("\n\t\t\t    -- Cat√°logo de apartamentos --\n\n\n");
+			printf("\n\t\t\t    -- Cat·logo de apartamentos --\n\n\n");
 			
 
 			break;
@@ -150,10 +149,10 @@ int  menu() {
 
 	system("cls");
 	printf("\n\n\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n\n");
-	printf("\n\t\t\t    -- MEN√ö PRINCIPAL DE TRIVATEATOR --\n\n\n\n");
-	printf("\tPara elegir opci√≥n, pulse:\n\n");
+	printf("\n\t\t\t    -- MEN⁄ PRINCIPAL DE TRIVATEATOR --\n\n\n\n");
+	printf("\tPara elegir opciÛn, pulse:\n\n");
 	printf("\t  A  -  ALQUILAR.\n\n");
-	printf("\t  V  -  VER CAT√ÅLOGO DE APARTAMENTOS.\n\n");
+	printf("\t  V  -  VER CAT¡LOGO DE APARTAMENTOS.\n\n");
 	printf("\t  R  -  VER RESERVAS REALIZADAS DE APARTAMENTOS.\n\n");
 	printf("\t  S  -  SALIR.\n");
 	scanf("%c", &op);
@@ -161,23 +160,3 @@ int  menu() {
 
 	return op;
 }
-int existeUsuario(struct Tusuario usuarioValido, char username[], char password[]) {
-
-	printf("\nIntroduzca su usuario: ");
-	scanf("%s", username);
-	fflush(stdin);
-	printf("\nIntroduzca su contrase√±a: ");
-	scanf("%s", password);
-	fflush(stdin);
-	getchar();
-
-	if ((strcmp(password, usuarioValido.password) == 0) && (strcmp(username, usuarioValido.username) == 0)) {
-
-		return 1;
-	}
-	else {
-
-		return 0;
-	}
-}
-
