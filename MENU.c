@@ -50,6 +50,7 @@ struct Tusuario {
 	char password[20];
 };
 //DECLARACIÃ“N DE FUNCIONES
+void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15]);
 
 
 
@@ -117,16 +118,18 @@ void main() {
 
 		case 'V':
 		case 'v':
-
-			system("cls");
+					system("cls");
 			printf("\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n");
-<<<<<<< HEAD
 			printf("\n\t\t\t    -- Catálogo de apartamentos --\n\n\n");
-		
-=======
-			printf("\n\t\t\t    -- CatÃ¡logo de apartamentos --\n\n\n");
->>>>>>> b8e0feca3340225f8a205ed0a44daa8b328d16ab
-			
+			for (i = 0; i < NUMCASAS; i++)
+			{
+				mostrarApartamento(casaAAlquilar, i, ciudad);
+				printf("\n-------------------------------------------------\n");
+			}
+			printf("\n\nPulse una tecla para volver al menú principal.");
+
+			while ((c = getchar()) != '\n' && c != EOF) {}
+			getchar();
 
 			break;
 
@@ -186,5 +189,31 @@ int existeUsuario(struct Tusuario usuarioValido, char username[], char password[
 
 		return 0;
 	}
+}
+
+void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15])
+{
+	printf("\n\t\tApartamento #%d:\n", indice + 1);
+	printf("\t\t\tEstado: %s\n", (pisosDisponibles[indice].alquilada ? "ALQUILADO" : "LIBRE"));
+
+	printf("\t\t\tCiudad: %s\n", ciudades[pisosDisponibles[indice].indiceCiudad]);
+	printf("\t\t\tCoste base por día: %.2f\n", pisosDisponibles[indice].precioBasePorDia);
+	printf("\t\t\tWifi: %s\n", (pisosDisponibles[indice].wifi ? "Si" : "No"));
+	printf("\t\t\tPiscina: %s\n", (pisosDisponibles[indice].piscina ? "Si" : "No"));
+	printf("\t\t\tTipo: %s\n", (pisosDisponibles[indice].tipoDeCasa == 0 ? "Chalet" : "Piso"));
+	switch (pisosDisponibles[indice].ubicacion)
+	{
+	case 0:
+		printf("\t\t\tUbicación: Céntrico\n");
+		break;
+	case 1:
+		printf("\t\t\tUbicación: Costa\n");
+		break;
+	case 2:
+		printf("\t\t\tUbicación: Alrededores\n");
+		break;
+	}
+	printf("\t\t\tHabitaciones: %d\n", pisosDisponibles[indice].numeroDeHabitaciones);
+	printf("\t\t\tValoración: %d\n", pisosDisponibles[indice].valoracion + 1);
 }
 
