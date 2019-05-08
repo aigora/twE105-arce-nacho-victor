@@ -51,6 +51,8 @@ struct Tusuario {
 };
 //DECLARACIÓN DE FUNCIONES
 
+
+
 int  menu();
 
 
@@ -118,6 +120,7 @@ void main() {
 			system("cls");
 			printf("\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n");
 			printf("\n\t\t\t    -- Catálogo de apartamentos --\n\n\n");
+		
 			
 
 			break;
