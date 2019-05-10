@@ -53,6 +53,7 @@ struct Tusuario {
 
 int  menu();
 int existeUsuario(struct Tusuario usuarioValido, char username[], char password[]);
+void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15]);
 
 
 void main() {
@@ -182,3 +183,28 @@ int existeUsuario(struct Tusuario usuarioValido, char username[], char password[
 	}
 }
 
+void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15])
+{
+	printf("\n\t\tApartamento #%d:\n", indice + 1);
+	printf("\t\t\tEstado: %s\n", (pisosDisponibles[indice].alquilada ? "ALQUILADO" : "LIBRE"));
+
+	printf("\t\t\tCiudad: %s\n", ciudades[pisosDisponibles[indice].indiceCiudad]);
+	printf("\t\t\tCoste base por día: %.2f\n", pisosDisponibles[indice].precioBasePorDia);
+	printf("\t\t\tWifi: %s\n", (pisosDisponibles[indice].wifi ? "Si" : "No"));
+	printf("\t\t\tPiscina: %s\n", (pisosDisponibles[indice].piscina ? "Si" : "No"));
+	printf("\t\t\tTipo: %s\n", (pisosDisponibles[indice].tipoDeCasa == 0 ? "Chalet" : "Piso"));
+	switch (pisosDisponibles[indice].ubicacion)
+	{
+	case 0:
+		printf("\t\t\tUbicación: Céntrico\n");
+		break;
+	case 1:
+		printf("\t\t\tUbicación: Costa\n");
+		break;
+	case 2:
+		printf("\t\t\tUbicación: Alrededores\n");
+		break;
+	}
+	printf("\t\t\tHabitaciones: %d\n", pisosDisponibles[indice].numeroDeHabitaciones);
+	printf("\t\t\tValoración: %d\n", pisosDisponibles[indice].valoracion + 1);
+}
