@@ -132,6 +132,24 @@ void main() {
 			printf("\tBarcelona\tVigo\t\tSantander\n\n\tValencia\tGijón\t\tMálaga\n\n\tAlicante\tMallorca\tCádiz\n\n");
 			scanf("%s", ciudadBuscada);
 			
+			while ((c = getchar()) != '\n' && c != EOF) {}
+			_strupr(ciudadBuscada);
+
+
+			ciudadEncontrada = 0;
+			for (i = 0; i < NUMCIUDADES; i++) {
+				if (strcmp(ciudadBuscada, ciudad[i]) == 0) {
+					ciudadEncontrada = 1;
+					break;
+				}
+			}
+
+			if (ciudadEncontrada == 1) {
+
+				strcpy(casaBuscada.ciudadBuscada, ciudadBuscada);
+				SeleccionaTemporada(&casaBuscada);
+			}
+			
 
 			break;
 
@@ -141,7 +159,16 @@ void main() {
 			system("cls");
 			printf("\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n");
 			printf("\n\t\t\t    -- Catálogo de apartamentos --\n\n\n");
-			
+				for (i = 0; i < NUMCASAS; i++)
+			{
+				mostrarApartamento(casaAAlquilar, i, ciudad);
+				printf("\n-------------------------------------------------\n");
+			}
+			printf("\n\nPulse una tecla para volver al men� principal.");
+
+			while ((c = getchar()) != '\n' && c != EOF) {}
+			getchar();
+
 
 			break;
 
