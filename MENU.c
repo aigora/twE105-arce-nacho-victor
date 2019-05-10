@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define NUMCASAS 10000
+#define NUMCASAS 1000
 #define NUMCIUDADES 9
 
 #include <stdio.h>
