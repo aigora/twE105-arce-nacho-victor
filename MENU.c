@@ -54,6 +54,7 @@ struct Tusuario {
 int  menu();
 int existeUsuario(struct Tusuario usuarioValido, char username[], char password[]);
 void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15]);
+void SeleccionaTemporada(struct Tfiltros *FitrosDelUsuario);
 
 
 void main() {
@@ -97,6 +98,26 @@ void main() {
 	precios.MultiplicadorPorTemporada[1] = 2;		// Verano
 	precios.MultiplicadorPorTemporada[2] = 1;		// OtoÃ±o
 	precios.MultiplicadorPorTemporada[3] = 0.75;	// Invierno
+	
+	
+	
+	
+														// Definimos las casas a aquilar: sus caracteristicas y precio
+	for (i = 0; i < NUMCASAS; i++) {
+		casaAAlquilar[i].tipoDeCasa = rand() % 2;
+		casaAAlquilar[i].piscina = rand() % 2;
+		casaAAlquilar[i].wifi = rand() % 2;
+		casaAAlquilar[i].ubicacion = rand() % 3;
+		casaAAlquilar[i].numeroDeHabitaciones = (rand() % 7) + 1;
+		casaAAlquilar[i].indiceCiudad = rand() % NUMCIUDADES;
+		casaAAlquilar[i].precioBasePorDia = (rand() % 21) + 20;
+		casaAAlquilar[i].alquilada = 0;
+		casaAAlquilar[i].valoracion = (rand() % 5); // De 0 a 4, para coincidir con los indices de los precios
+	}
+	
+	
+	//DESARROLLO DEL PROGRAMA
+	
 	
 	do {
 
@@ -207,4 +228,57 @@ void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, ch
 	}
 	printf("\t\t\tHabitaciones: %d\n", pisosDisponibles[indice].numeroDeHabitaciones);
 	printf("\t\t\tValoración: %d\n", pisosDisponibles[indice].valoracion + 1);
+}
+
+
+void SeleccionaTemporada(struct Tfiltros *FiltrosDelUsuario) {
+
+	char opcion;
+	int opcionValida = 0;
+	char c;
+
+	do {
+
+		system("cls");
+
+		printf("\n\nElija la temporada en la que desea alquilar un apartamento: \n\n");
+		printf("P - Primavera\n\n");
+		printf("V - Verano\n\n");
+		printf("O - Otoño\n\n");
+		printf("I - Invierno\n\n");
+		scanf("%c", &opcion);
+		while ((c = getchar()) != '\n' && c != EOF) {}
+
+		switch (opcion)
+		{
+		case 'P':
+		case 'p':
+			opcionValida = 1;
+			FiltrosDelUsuario->temporada = 0;
+			break;
+		case 'V':
+		case 'v':
+			opcionValida = 1;
+			FiltrosDelUsuario->temporada = 1;
+			break;
+		case 'O':
+		case 'o':
+			opcionValida = 1;
+			FiltrosDelUsuario->temporada = 2;
+			break;
+		case 'I':
+		case 'i':
+			opcionValida = 1;
+			FiltrosDelUsuario->temporada = 3;
+			break;
+
+		default:
+			printf("\n\nNo ha seleccionado una opción válida. Pulse una tecla para volver a escoger.\n\n");
+			opcionValida = 0;
+			getchar();
+			break;
+		}
+
+	} while (!opcionValida);
+
 }
