@@ -55,6 +55,8 @@ int  menu();
 int existeUsuario(struct Tusuario usuarioValido, char username[], char password[]);
 void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15]);
 void SeleccionaTemporada(struct Tfiltros *FitrosDelUsuario);
+int SeleccionaTipoDeCasa(struct Tfiltros *FitrosDelUsuario);
+int SeleccionaPiscina(struct Tfiltros *FiltrosDelUsuario);
 
 
 void main() {
@@ -148,6 +150,8 @@ void main() {
 
 				strcpy(casaBuscada.ciudadBuscada, ciudadBuscada);
 				SeleccionaTemporada(&casaBuscada);
+				SeleccionaTipoDeCasa(&casaBuscada);
+				SeleccionaPiscina(&casaBuscada);
 			}
 			
 
@@ -307,5 +311,82 @@ void SeleccionaTemporada(struct Tfiltros *FiltrosDelUsuario) {
 		}
 
 	} while (!opcionValida);
+
+}
+
+int SeleccionaTipoDeCasa(struct Tfiltros *FiltrosDelUsuario) {
+
+	char opcionTipoDeCasa, c;
+
+	do {
+
+		system("cls");
+
+		printf("\n\nElija si quiere alquilar un chalet (pulsando C) o un piso (pulsando P): ");
+		scanf("%c", &opcionTipoDeCasa);
+		while ((c = getchar()) != '\n' && c != EOF) {}
+
+		if (opcionTipoDeCasa == 'C' || opcionTipoDeCasa == 'c') {
+
+			FiltrosDelUsuario->tipoDeCasa = 0;
+			printf("\n\nHa reservado un chalet.\n\n");
+			return FiltrosDelUsuario->tipoDeCasa;
+			break;
+		}
+
+		else if (opcionTipoDeCasa == 'P' || opcionTipoDeCasa == 'p') {
+
+			FiltrosDelUsuario->tipoDeCasa = 1;
+			printf("\n\nHa reservado un piso.\n\n");
+			return FiltrosDelUsuario->tipoDeCasa;
+			break;
+		}
+
+		else {
+
+			printf("\n\n No ha elegido una opción disponible. Pulse una tecla para volver a escoger.\n\n");
+		}
+		getchar();
+		
+	} while (opcionTipoDeCasa != 'C' && opcionTipoDeCasa != 'c' && opcionTipoDeCasa != 'P' && opcionTipoDeCasa != 'p');
+
+}
+
+int SeleccionaPiscina(struct Tfiltros *FiltrosDelUsuario) {
+
+	char opcionPiscina, c;
+
+	do {
+
+		system("cls");
+
+		printf("\n\n¿Quiere añadir piscina? (pulse S para 'si' y N para 'no'):\n\n- SI\n- NO\n\n");
+		scanf("%c", &opcionPiscina);
+		while ((c = getchar()) != '\n' && c != EOF) {}
+
+		if (opcionPiscina == 'N' || opcionPiscina == 'n') {
+
+			FiltrosDelUsuario->piscina = 0;
+			return FiltrosDelUsuario->piscina;
+			printf("\n\nNo ha reservado apartamento con piscina.\n\n");
+			break;
+
+		}
+
+		else if (opcionPiscina == 'S' || opcionPiscina == 's') {
+
+			FiltrosDelUsuario->piscina = 1;
+			printf("\n\nHa reservado apartamento con piscina.\n\n");
+			return FiltrosDelUsuario->piscina;
+			break;
+
+		}
+
+		else {
+
+			printf("\n\nNo ha elegido una opción disponible.\n\n");
+		}
+		getchar();
+	} while (opcionPiscina != 'N' && opcionPiscina != 'n' && opcionPiscina != 'S' && opcionPiscina != 's');
 
 }
