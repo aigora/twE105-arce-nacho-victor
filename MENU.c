@@ -58,6 +58,7 @@ void SeleccionaTemporada(struct Tfiltros *FitrosDelUsuario);
 int SeleccionaTipoDeCasa(struct Tfiltros *FitrosDelUsuario);
 int SeleccionaPiscina(struct Tfiltros *FiltrosDelUsuario);
 int SeleccionaUbicacion(struct Tfiltros *FiltrosDelUsuario);
+int SeleccionaNumeroDeHabitaciones(struct Tfiltros *FiltrosDelUsuario);
 
 
 void main() {
@@ -438,5 +439,34 @@ int SeleccionaUbicacion(struct Tfiltros *FiltrosDelUsuario) {
 		getchar();
 
 	} while (opcionUbicacion == 'C' || opcionUbicacion == 'c' || opcionUbicacion == 'O' || opcionUbicacion == 'o' || opcionUbicacion == 'A' || opcionUbicacion == 'a');
+
+}
+int SeleccionaNumeroDeHabitaciones(struct Tfiltros *FiltrosDelUsuario) {
+
+	char c;
+	int opcionNumeroDeHabitaciones;
+	do {
+
+		system("cls");
+
+
+		printf("\n\n¿Cuantas habitaciones desea reservar?\n\n");
+		scanf("%d", &opcionNumeroDeHabitaciones);
+		while ((c = getchar()) != '\n' && c != EOF) {}
+
+		if (opcionNumeroDeHabitaciones >= 1 && opcionNumeroDeHabitaciones <= 7) {
+
+			FiltrosDelUsuario->numeroDeHabitaciones = opcionNumeroDeHabitaciones;
+			break;
+		}
+
+		else
+		{
+			printf("\n\n Número de habitaciones no válido. Pulse una tecla para volver a introducirlo.\n\n");
+			getchar();
+		}
+	} while (opcionNumeroDeHabitaciones < 1 || opcionNumeroDeHabitaciones > 7);
+
+	return FiltrosDelUsuario->numeroDeHabitaciones;
 
 }
