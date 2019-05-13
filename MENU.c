@@ -57,6 +57,7 @@ void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, ch
 void SeleccionaTemporada(struct Tfiltros *FitrosDelUsuario);
 int SeleccionaTipoDeCasa(struct Tfiltros *FitrosDelUsuario);
 int SeleccionaPiscina(struct Tfiltros *FiltrosDelUsuario);
+int SeleccionaWifi(&casaBuscada);
 int SeleccionaUbicacion(struct Tfiltros *FiltrosDelUsuario);
 int SeleccionaNumeroDeHabitaciones(struct Tfiltros *FiltrosDelUsuario);
 
@@ -154,6 +155,10 @@ void main() {
 				SeleccionaTemporada(&casaBuscada);
 				SeleccionaTipoDeCasa(&casaBuscada);
 				SeleccionaPiscina(&casaBuscada);
+				SeleccionaWifi(&casaBuscada);
+				SeleccionaUbicacion(&casaBuscada);
+				SeleccionaNumeroDeHabitaciones(&casaBuscada);
+				
 			}
 			
 
@@ -392,6 +397,48 @@ int SeleccionaPiscina(struct Tfiltros *FiltrosDelUsuario) {
 	} while (opcionPiscina != 'N' && opcionPiscina != 'n' && opcionPiscina != 'S' && opcionPiscina != 's');
 
 }
+
+int SeleccionaWifi(struct Tfiltros *FiltrosDelUsuario) {
+
+	char opcionWifi, c;
+
+	do {
+
+		system("cls");
+
+		printf("\n\n¿Quiere añadir WiFi? (pulse S para 'si' y N para 'no'):\n\n- SI\n- NO\n\n");
+		scanf("%c", &opcionWifi);
+		while ((c = getchar()) != '\n' && c != EOF) {}
+
+		if (opcionWifi == 'N' || opcionWifi == 'n') {
+
+			FiltrosDelUsuario->wifi = 0;
+			printf("\n\nNo ha reservado apartamento con WiFi.\n\n");
+			return FiltrosDelUsuario->wifi;
+			break;
+
+		}
+
+		else if (opcionWifi == 'S' || opcionWifi == 's') {
+
+			FiltrosDelUsuario->wifi = 1;
+			printf("\n\nHa reservado apartamento con WiFi.\n\n");
+			return FiltrosDelUsuario->wifi;
+			break;
+
+		}
+
+		else
+		{
+			printf("\n\nNo ha elegido una opción disponible. Pulse una tecla para volver a escoger.\n\n");
+		}
+		getchar();
+
+	} while (opcionWifi != 'N' && opcionWifi != 'n' && opcionWifi != 'S' && opcionWifi != 's');
+
+}
+
+
 int SeleccionaUbicacion(struct Tfiltros *FiltrosDelUsuario) {
 
 	char opcionUbicacion, c;
