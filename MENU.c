@@ -57,9 +57,10 @@ void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, ch
 void SeleccionaTemporada(struct Tfiltros *FitrosDelUsuario);
 int SeleccionaTipoDeCasa(struct Tfiltros *FitrosDelUsuario);
 int SeleccionaPiscina(struct Tfiltros *FiltrosDelUsuario);
-int SeleccionaWifi(&casaBuscada);
+int SeleccionaWifi(struct Tfiltros *FiltrosDelUsuario);
 int SeleccionaUbicacion(struct Tfiltros *FiltrosDelUsuario);
 int SeleccionaNumeroDeHabitaciones(struct Tfiltros *FiltrosDelUsuario);
+int SeleccionaValoracion(struct Tfiltros *FiltrosDelUsuario);
 
 
 void main() {
@@ -158,6 +159,7 @@ void main() {
 				SeleccionaWifi(&casaBuscada);
 				SeleccionaUbicacion(&casaBuscada);
 				SeleccionaNumeroDeHabitaciones(&casaBuscada);
+				SeleccionaValoracion(&casaBuscada);
 				
 			}
 			
@@ -515,5 +517,35 @@ int SeleccionaNumeroDeHabitaciones(struct Tfiltros *FiltrosDelUsuario) {
 	} while (opcionNumeroDeHabitaciones < 1 || opcionNumeroDeHabitaciones > 7);
 
 	return FiltrosDelUsuario->numeroDeHabitaciones;
+
+}
+int SeleccionaValoracion(struct Tfiltros *FiltrosDelUsuario) {
+
+	int estrellas;
+	char c;
+	do {
+
+		system("cls");
+
+		printf("\n\n¿Qué valoración desea para su apartamento?\n\n- 1 estrella (pulse 1)\n\n- 2 estrellas (pulse 2)\n\n- 3 estrellas (pulse 3)\n\n- 4 estrellas (pulse 4)\n\n- 5 estrellas (pulse 5)\n\n");
+		scanf("%d", &estrellas);
+		while ((c = getchar()) != '\n' && c != EOF) {}
+
+		if (estrellas >= 1 || estrellas <= 5) {
+
+			FiltrosDelUsuario->valoracion = estrellas;
+
+		}
+
+		else {
+
+			printf("\n\nHa introducido un número incorrecto. Pulse una tecla para volver a introducirlo.\n\n");
+			getchar();
+
+		}
+
+	} while (estrellas < 1 || estrellas > 5);
+
+	return FiltrosDelUsuario->valoracion;
 
 }
