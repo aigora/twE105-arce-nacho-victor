@@ -63,6 +63,7 @@ int SeleccionaNumeroDeHabitaciones(struct Tfiltros *FiltrosDelUsuario);
 int SeleccionaValoracion(struct Tfiltros *FiltrosDelUsuario);
 int buscarPisoAdecuado(struct Tfiltros seleccionesDelUsuario, struct Tcaracteristica *pisosDisponibles, char ciudades[NUMCIUDADES][15]);
 float calcularPrecioFinalPorDia(struct Tprecios nuestrosPrecios, struct Tcaracteristica pisoSeleccionado, int temporada);
+void mostrarApartamentoEnFichero(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15]);
 
 
 
@@ -714,4 +715,40 @@ float calcularPrecioFinalPorDia(struct Tprecios nuestrosPrecios, struct Tcaracte
 	precio = precio * nuestrosPrecios.MultiplicadorPorTemporada[temporada]; // Esto es un multiplicador segun la temporada escogida
 
 	return precio;
+}
+void mostrarApartamentoEnFichero(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15]) {
+
+
+	FILE *f;
+
+	f = fopen("Pisos_Alquilados.txt", "a");
+
+	if (f == NULL) {
+		printf("\nNo se ha podido abrir el fichero\n\n");
+		system("PAUSE");
+	}
+
+	fprintf(f, "\n\t\tApartamento #%d:\n", indice + 1);
+	fprintf(f, "\t\t\tEstado: ALQUILADO\n");
+	fprintf(f, "\t\t\tCiudad: %s\n", ciudades[pisosDisponibles[indice].indiceCiudad]);
+	fprintf(f, "\t\t\tCoste base por día: %.2f\n", pisosDisponibles[indice].precioBasePorDia);
+	fprintf(f, "\t\t\tWifi: %s\n", (pisosDisponibles[indice].wifi ? "Si" : "No"));
+	fprintf(f, "\t\t\tPiscina: %s\n", (pisosDisponibles[indice].piscina ? "Si" : "No"));
+	fprintf(f, "\t\t\tTipo: %s\n", (pisosDisponibles[indice].tipoDeCasa == 0 ? "Chalet" : "Piso"));
+	switch (pisosDisponibles[indice].ubicacion)
+	{
+	case 0:
+		fprintf(f, "\t\t\tUbicación: Céntrico\n");
+		break;
+	case 1:
+		fprintf(f, "\t\t\tUbicación: Costa\n");
+		break;
+	case 2:
+		fprintf(f, "\t\t\tUbicación: Alrededores\n");
+		break;
+	}
+	fprintf(f, "\t\t\tHabitaciones: %d\n", pisosDisponibles[indice].numeroDeHabitaciones);
+	fprintf(f, "\t\t\tValoración: %d\n", pisosDisponibles[indice].valoracion + 1);
+
+	fclose(f);
 }
