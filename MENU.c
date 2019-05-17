@@ -160,9 +160,61 @@ void main() {
 				SeleccionaUbicacion(&casaBuscada);
 				SeleccionaNumeroDeHabitaciones(&casaBuscada);
 				SeleccionaValoracion(&casaBuscada);
-				
+				casaEncontrada = buscarPisoAdecuado(casaBuscada, casaAAlquilar, ciudad);
 			}
-			
+				if (casaEncontrada >= 0)
+				{
+					precioFinalPorDia = calcularPrecioFinalPorDia(precios, casaAAlquilar[casaEncontrada], casaBuscada.temporada);
+
+					printf("\n\n¿Cuántos días desea estar?\n\n");
+					scanf("%d", &numDias);
+					while ((c = getchar()) != '\n' && c != EOF) {}
+
+					precioFinalTotal = precioFinalPorDia * numDias;
+
+					printf("\n\nHemos encontrado un apartamento a su gusto:\n\n");
+
+
+
+					mostrarApartamento(casaAAlquilar, casaEncontrada, ciudad);
+
+					
+
+					printf("\n\nEl coste por día es %.2f euros.\nEl coste total es de %.2f euros para su estancia de %d días.", precioFinalPorDia, precioFinalTotal, numDias);
+					printf("\nSi desea cancelar la reserva, pulse C.\n\n");
+					scanf("%c", &opcion_cancelar);
+
+					if (opcion_cancelar == 'C' || opcion_cancelar == 'c') {
+
+						printf("\n\nHa cancelado su reserva de apartamento.\n\n");
+					}
+					else
+					{
+						casaAAlquilar[casaEncontrada].alquilada = 1; // Marcamos la casa como alquilada
+						printf("\n\nReserva confirmada.\n\n");
+
+						//-------------------------------------------------------------------
+
+						mostrarApartamentoEnFichero(casaAAlquilar, casaEncontrada, ciudad);
+
+						//-------------------------------------------------------------------
+					}
+				}
+				else
+				{
+					printf("\n\nNo se ha encontrado ningún apartamento que cumpla sus criterios de búsqueda.\n\n");
+				}
+				getchar();
+
+			}
+
+			else
+			{
+				printf("\n\nLo sentimos, no tenemos apartamentos en esa ciudad. Pulse una tecla para volver al menú.\n\n");
+				while ((c = getchar()) != '\n' && c != EOF) {}
+				getchar();
+			}
+
 
 			break;
 
