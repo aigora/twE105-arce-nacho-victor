@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define NUMCASAS 1000
+#define NUMCASAS 5000
 #define NUMCIUDADES 9
 
 #include <stdio.h>
@@ -42,14 +42,14 @@ struct Tfiltros {
 	int wifi;
 	int numeroDeHabitaciones;
 	int valoracion;
-	char ciudadBuscada[15];//a lo mejor hay que quitar esto porque estÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ definida igual tambien en el main
+	char ciudadBuscada[15];//a lo mejor hay que quitar esto porque esta definida igual tambien en el main
 };
 
 struct Tusuario {
 	char username[20];
 	char password[20];
 };
-//DECLARACIÃƒÆ’Ã¢â‚¬Å“N DE FUNCIONES
+//DECLARACION DE FUNCIONES
 
 int  menu();
 int existeUsuario(struct Tusuario usuarioValido, char username[], char password[]);
@@ -104,14 +104,14 @@ void main() {
 	precios.Valoracion[3] = 1.25;
 	precios.Valoracion[4] = 1.5;
 	precios.MultiplicadorPorTemporada[0] = 1.25;	// Primavera
-	precios.MultiplicadorPorTemporada[1] = 2;		// Verano
-	precios.MultiplicadorPorTemporada[2] = 1;		// OtoÃƒÆ’Ã‚Â±o
+	precios.MultiplicadorPorTemporada[1] = 2;	// Verano
+	precios.MultiplicadorPorTemporada[2] = 1;	// Otoño
 	precios.MultiplicadorPorTemporada[3] = 0.75;	// Invierno
 	
 	
 	
 	
-														// Definimos las casas a aquilar: sus caracteristicas y precio
+// Definimos las casas a aquilar: sus caracteristicas y precio
 	for (i = 0; i < NUMCASAS; i++) {
 		casaAAlquilar[i].tipoDeCasa = rand() % 2;
 		casaAAlquilar[i].piscina = rand() % 2;
@@ -137,8 +137,8 @@ void main() {
 		case 'A':
 		case 'a':
 
-			printf("\n\nÃƒâ€šÃ‚Â¿QuÃƒÆ’Ã‚Â© ciudad desea visitar? Elija entre opciones como:\n\n");
-			printf("\tBarcelona\tVigo\t\tSantander\n\n\tValencia\tGijÃƒÆ’Ã‚Â³n\t\tMÃƒÆ’Ã‚Â¡laga\n\n\tAlicante\tMallorca\tCÃƒÆ’Ã‚Â¡diz\n\n");
+			printf("\n\n¿Que ciudad desea visitar? Elija entre opciones como:\n\n");
+	                printf("\tBarcelona\tVigo\t\tSantander\n\n\tValencia\tGijon\t\tMalaga\n\n\tAlicante\tMallorca\tCadiz\n\n");
 			scanf("%s", ciudadBuscada);
 			
 			while ((c = getchar()) != '\n' && c != EOF) {}
@@ -226,13 +226,13 @@ void main() {
 
 			system("cls");
 			printf("\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n");
-			printf("\n\t\t\t    -- CatÃƒÆ’Ã‚Â¡logo de apartamentos --\n\n\n");
+			printf("\n\t\t\t    -- Catalogo de apartamentos --\n\n\n");
 				for (i = 0; i < NUMCASAS; i++)
 			{
 				mostrarApartamento(casaAAlquilar, i, ciudad);
 				printf("\n-------------------------------------------------\n");
 			}
-			printf("\n\nPulse una tecla para volver al menÃƒÂº principal.");
+			printf("\n\nPulse una tecla para volver al menu principal.");
 
 			while ((c = getchar()) != '\n' && c != EOF) {}
 			getchar();
@@ -284,10 +284,10 @@ int  menu() {
 
 	system("cls");
 	printf("\n\n\n\t\tBienvenidos a nuestro portal oficial de alquiler de viviendas\n\n\n");
-	printf("\n\t\t\t    -- MENÃƒÆ’Ã…Â¡ PRINCIPAL DE TRIVATEATOR --\n\n\n\n");
-	printf("\tPara elegir opciÃƒÆ’Ã‚Â³n, pulse:\n\n");
+	printf("\n\t\t\t    -- MENU PRINCIPAL DE RASTRIVAGO --\n\n\n\n");
+	printf("\tPara elegir opcion, pulse:\n\n");
 	printf("\t  A  -  ALQUILAR.\n\n");
-	printf("\t  V  -  VER CATÃƒÆ’Ã‚ÂLOGO DE APARTAMENTOS.\n\n");
+	printf("\t  V  -  VER CATALOGO DE APARTAMENTOS.\n\n");
 	printf("\t  R  -  VER RESERVAS REALIZADAS DE APARTAMENTOS.\n\n");
 	printf("\t  S  -  SALIR.\n");
 	scanf("%c", &op);
@@ -301,7 +301,7 @@ int existeUsuario(struct Tusuario usuarioValido, char username[], char password[
 	printf("\nIntroduzca su usuario: ");
 	scanf("%s", username);
 	fflush(stdin);
-	printf("\nIntroduzca su contraseÃƒÆ’Ã‚Â±a: ");
+	printf("\nIntroduzca su contraseña: ");
 	scanf("%s", password);
 	fflush(stdin);
 	getchar();
@@ -322,24 +322,24 @@ void mostrarApartamento(struct Tcaracteristica *pisosDisponibles, int indice, ch
 	printf("\t\t\tEstado: %s\n", (pisosDisponibles[indice].alquilada ? "ALQUILADO" : "LIBRE"));
 
 	printf("\t\t\tCiudad: %s\n", ciudades[pisosDisponibles[indice].indiceCiudad]);
-	printf("\t\t\tCoste base por dÃƒÂ­a: %.2f\n", pisosDisponibles[indice].precioBasePorDia);
+	printf("\t\t\tCoste base por dia: %.2f\n", pisosDisponibles[indice].precioBasePorDia);
 	printf("\t\t\tWifi: %s\n", (pisosDisponibles[indice].wifi ? "Si" : "No"));
 	printf("\t\t\tPiscina: %s\n", (pisosDisponibles[indice].piscina ? "Si" : "No"));
 	printf("\t\t\tTipo: %s\n", (pisosDisponibles[indice].tipoDeCasa == 0 ? "Chalet" : "Piso"));
 	switch (pisosDisponibles[indice].ubicacion)
 	{
 	case 0:
-		printf("\t\t\tUbicaciÃƒÂ³n: CÃƒÂ©ntrico\n");
+		printf("\t\t\tUbicacion: Centrico\n");
 		break;
 	case 1:
-		printf("\t\t\tUbicaciÃƒÂ³n: Costa\n");
+		printf("\t\t\tUbicacion: Costa\n");
 		break;
 	case 2:
-		printf("\t\t\tUbicaciÃƒÂ³n: Alrededores\n");
+		printf("\t\t\tUbicacion: Alrededores\n");
 		break;
 	}
 	printf("\t\t\tHabitaciones: %d\n", pisosDisponibles[indice].numeroDeHabitaciones);
-	printf("\t\t\tValoraciÃƒÂ³n: %d\n", pisosDisponibles[indice].valoracion + 1);
+	printf("\t\t\tValoracion: %d\n", pisosDisponibles[indice].valoracion + 1);
 }
 
 
@@ -356,7 +356,7 @@ void SeleccionaTemporada(struct Tfiltros *FiltrosDelUsuario) {
 		printf("\n\nElija la temporada en la que desea alquilar un apartamento: \n\n");
 		printf("P - Primavera\n\n");
 		printf("V - Verano\n\n");
-		printf("O - OtoÃƒÂ±o\n\n");
+		printf("O - Otoño\n\n");
 		printf("I - Invierno\n\n");
 		scanf("%c", &opcion);
 		while ((c = getchar()) != '\n' && c != EOF) {}
@@ -385,7 +385,7 @@ void SeleccionaTemporada(struct Tfiltros *FiltrosDelUsuario) {
 			break;
 
 		default:
-			printf("\n\nNo ha seleccionado una opciÃƒÂ³n vÃƒÂ¡lida. Pulse una tecla para volver a escoger.\n\n");
+			printf("\n\nNo ha seleccionado una opcion valida. Pulse una tecla para volver a escoger.\n\n");
 			opcionValida = 0;
 			getchar();
 			break;
@@ -425,7 +425,7 @@ int SeleccionaTipoDeCasa(struct Tfiltros *FiltrosDelUsuario) {
 
 		else {
 
-			printf("\n\n No ha elegido una opciÃƒÂ³n disponible. Pulse una tecla para volver a escoger.\n\n");
+			printf("\n\n No ha elegido una opcion disponible. Pulse una tecla para volver a escoger.\n\n");
 		}
 		getchar();
 		
@@ -441,7 +441,7 @@ int SeleccionaPiscina(struct Tfiltros *FiltrosDelUsuario) {
 
 		system("cls");
 
-		printf("\n\nÃ‚Â¿Quiere aÃƒÂ±adir piscina? (pulse S para 'si' y N para 'no'):\n\n- SI\n- NO\n\n");
+		printf("\n\n¿Quiere añadir piscina? (pulse S para 'si' y N para 'no'):\n\n- SI\n- NO\n\n");
 		scanf("%c", &opcionPiscina);
 		while ((c = getchar()) != '\n' && c != EOF) {}
 
@@ -465,7 +465,7 @@ int SeleccionaPiscina(struct Tfiltros *FiltrosDelUsuario) {
 
 		else {
 
-			printf("\n\nNo ha elegido una opciÃƒÂ³n disponible.\n\n");
+			printf("\n\nNo ha elegido una opcion disponible.\n\n");
 		}
 		getchar();
 	} while (opcionPiscina != 'N' && opcionPiscina != 'n' && opcionPiscina != 'S' && opcionPiscina != 's');
@@ -479,8 +479,7 @@ int SeleccionaWifi(struct Tfiltros *FiltrosDelUsuario) {
 	do {
 
 		system("cls");
-
-		printf("\n\nÂ¿Quiere aÃ±adir WiFi? (pulse S para 'si' y N para 'no'):\n\n- SI\n- NO\n\n");
+		printf("\n\n¿Quiere añadir WiFi? (pulse S para 'si' y N para 'no'):\n\n- SI\n- NO\n\n");
 		scanf("%c", &opcionWifi);
 		while ((c = getchar()) != '\n' && c != EOF) {}
 
@@ -504,7 +503,7 @@ int SeleccionaWifi(struct Tfiltros *FiltrosDelUsuario) {
 
 		else
 		{
-			printf("\n\nNo ha elegido una opciÃ³n disponible. Pulse una tecla para volver a escoger.\n\n");
+			printf("\n\nNo ha elegido una opcion disponible. Pulse una tecla para volver a escoger.\n\n");
 		}
 		getchar();
 
@@ -521,7 +520,7 @@ int SeleccionaUbicacion(struct Tfiltros *FiltrosDelUsuario) {
 
 		system("cls");
 
-		printf("Ã‚Â¿QuÃƒÂ© ubicaciÃƒÂ³n prefiere?:\n\n- Centrico (pulse C)\n\n- Costa (pulse O)\n\n- Alrededores (pulse A)\n\n");
+		printf("¿Que ubicacion prefiere?:\n\n- Centrico (pulse C)\n\n- Costa (pulse O)\n\n- Alrededores (pulse A)\n\n");
 		scanf("%c", &opcionUbicacion);
 		while ((c = getchar()) != '\n' && c != EOF) {}
 
@@ -555,7 +554,7 @@ int SeleccionaUbicacion(struct Tfiltros *FiltrosDelUsuario) {
 
 		else
 		{
-			printf("\n\nNo ha elegido una opciÃƒÂ³n disponible. Pulse una tecla para volver a escoger.\n\n");
+			printf("\n\nNo ha elegido una opcion disponible. Pulse una tecla para volver a escoger.\n\n");
 		}
 		getchar();
 
@@ -571,7 +570,7 @@ int SeleccionaNumeroDeHabitaciones(struct Tfiltros *FiltrosDelUsuario) {
 		system("cls");
 
 
-		printf("\n\nÃ‚Â¿Cuantas habitaciones desea reservar?\n\n");
+		printf("\n\n¿Cuantas habitaciones desea reservar?\n\n");
 		scanf("%d", &opcionNumeroDeHabitaciones);
 		while ((c = getchar()) != '\n' && c != EOF) {}
 
@@ -583,7 +582,7 @@ int SeleccionaNumeroDeHabitaciones(struct Tfiltros *FiltrosDelUsuario) {
 
 		else
 		{
-			printf("\n\n NÃƒÂºmero de habitaciones no vÃƒÂ¡lido. Pulse una tecla para volver a introducirlo.\n\n");
+			printf("\n\n Numero de habitaciones no valido. Pulse una tecla para volver a introducirlo.\n\n");
 			getchar();
 		}
 	} while (opcionNumeroDeHabitaciones < 1 || opcionNumeroDeHabitaciones > 7);
@@ -599,7 +598,7 @@ int SeleccionaValoracion(struct Tfiltros *FiltrosDelUsuario) {
 
 		system("cls");
 
-		printf("\n\nÂ¿QuÃ© valoraciÃ³n desea para su apartamento?\n\n- 1 estrella (pulse 1)\n\n- 2 estrellas (pulse 2)\n\n- 3 estrellas (pulse 3)\n\n- 4 estrellas (pulse 4)\n\n- 5 estrellas (pulse 5)\n\n");
+		printf("\n\n¿Que valoracion desea para su apartamento?\n\n- 1 estrella (pulse 1)\n\n- 2 estrellas (pulse 2)\n\n- 3 estrellas (pulse 3)\n\n- 4 estrellas (pulse 4)\n\n- 5 estrellas (pulse 5)\n\n");
 		scanf("%d", &estrellas);
 		while ((c = getchar()) != '\n' && c != EOF) {}
 
@@ -611,7 +610,7 @@ int SeleccionaValoracion(struct Tfiltros *FiltrosDelUsuario) {
 
 		else {
 
-			printf("\n\nHa introducido un nÃºmero incorrecto. Pulse una tecla para volver a introducirlo.\n\n");
+			printf("\n\nHa introducido un numero incorrecto. Pulse una tecla para volver a introducirlo.\n\n");
 			getchar();
 
 		}
@@ -660,7 +659,7 @@ int buscarPisoAdecuado(struct Tfiltros seleccionesDelUsuario, struct Tcaracteris
 			estaCasaNosVale = 0;
 		}
 
-		if (seleccionesDelUsuario.numeroDeHabitaciones != pisosDisponibles[i].numeroDeHabitaciones) //Barre el nÃºmero de habitaciones
+		if (seleccionesDelUsuario.numeroDeHabitaciones != pisosDisponibles[i].numeroDeHabitaciones) //Barre el numero de habitaciones
 		{
 			estaCasaNosVale = 0;
 		}
@@ -670,17 +669,17 @@ int buscarPisoAdecuado(struct Tfiltros seleccionesDelUsuario, struct Tcaracteris
 			estaCasaNosVale = 0;
 		}
 
-		if (seleccionesDelUsuario.ubicacion != pisosDisponibles[i].ubicacion) //Si la ubicaciÃ³n coincide
+		if (seleccionesDelUsuario.ubicacion != pisosDisponibles[i].ubicacion) //Si la ubicacion coincide
 		{
 			estaCasaNosVale = 0;
 		}
 
-		if ((pisosDisponibles[i].valoracion + 1) != seleccionesDelUsuario.valoracion) //En la valoraciÃ³n hay un +1 porque las estrellas parten desde1, no 0
+		if ((pisosDisponibles[i].valoracion + 1) != seleccionesDelUsuario.valoracion) //En la valoracion hay un +1 porque las estrellas parten desde1, no 0
 		{
 			estaCasaNosVale = 0;
 		}
 
-		if (estaCasaNosVale) //Si vale, nos devuelve un valor i del nÃºmero de apartamento
+		if (estaCasaNosVale) //Si vale, nos devuelve un valor i del numero de apartamento
 		{
 			return i;
 		}
@@ -707,8 +706,8 @@ float calcularPrecioFinalPorDia(struct Tprecios nuestrosPrecios, struct Tcaracte
 		precio += nuestrosPrecios.Wifi;
 	}
 
-	precio += nuestrosPrecios.Ubicacion[pisoSeleccionado.ubicacion]; // este coste siempre se aÃ±ade
-	precio += nuestrosPrecios.TipoCasa[pisoSeleccionado.tipoDeCasa]; // este coste siempre se aÃ±ade
+	precio += nuestrosPrecios.Ubicacion[pisoSeleccionado.ubicacion]; // este coste siempre se añade
+	precio += nuestrosPrecios.TipoCasa[pisoSeleccionado.tipoDeCasa]; // este coste siempre se añade
 
 	precio = precio * nuestrosPrecios.Valoracion[pisoSeleccionado.valoracion]; // Esto es un multiplicador segun lo bien valorada que este la casa
 
