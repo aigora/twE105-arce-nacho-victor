@@ -164,7 +164,7 @@ void main() {
 				SeleccionaNumeroDeHabitaciones(&casaBuscada);
 				SeleccionaValoracion(&casaBuscada);
 				casaEncontrada = buscarPisoAdecuado(casaBuscada, casaAAlquilar, ciudad);
-			}
+			
 				if (casaEncontrada >= 0)
 				{
 					precioFinalPorDia = calcularPrecioFinalPorDia(precios, casaAAlquilar[casaEncontrada], casaBuscada.temporada);
@@ -243,7 +243,24 @@ void main() {
 		case 'R':
 		case 'r':
 
+				for (j = 2; j >= 0; j--) {
+
+				if (existeUsuario(miUsuario, usernameIntroducido, passwordIntroducida) == 1) {
+
+					//-----------------------------
+
+					leerApartamentoDelFichero();
+
+					//-----------------------------
+
+					break;
+				}
+				else {
+					printf("\nEl usuario o la contraseña introducidos no son válidos.\n");
+					printf("Tiene %d intentos restantes\n\n", j);
+				}
 			
+			}
 
 			break;
 
