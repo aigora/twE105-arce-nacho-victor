@@ -64,7 +64,7 @@ int SeleccionaValoracion(struct Tfiltros *FiltrosDelUsuario);
 int buscarPisoAdecuado(struct Tfiltros seleccionesDelUsuario, struct Tcaracteristica *pisosDisponibles, char ciudades[NUMCIUDADES][15]);
 float calcularPrecioFinalPorDia(struct Tprecios nuestrosPrecios, struct Tcaracteristica pisoSeleccionado, int temporada);
 void mostrarApartamentoEnFichero(struct Tcaracteristica *pisosDisponibles, int indice, char ciudades[NUMCIUDADES][15]);
-
+void leerApartamentoDelFichero();
 
 
 void main() {
@@ -751,4 +751,29 @@ void mostrarApartamentoEnFichero(struct Tcaracteristica *pisosDisponibles, int i
 	fprintf(f, "\t\t\tValoración: %d\n", pisosDisponibles[indice].valoracion + 1);
 
 	fclose(f);
+}
+
+void leerApartamentoDelFichero() {
+
+	FILE *f;
+
+	char caracter;
+
+	f = fopen("Pisos_Alquilados.txt", "r");
+
+	if (f == NULL) {
+		printf("\n\nNo hay apartamentos alquilados por clientes\n\n\n\n");
+		system("pause");
+	}
+	else {
+		while ((caracter = fgetc(f)) != EOF) {
+
+			printf("%c", caracter);
+		}
+		printf("\n");
+	}
+	fclose(f);
+	
+	system("pause");
+
 }
