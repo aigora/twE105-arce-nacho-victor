@@ -1,0 +1,11 @@
+
+		Apartamento #3147:
+			Estado: ALQUILADO
+			Ciudad: VIGO
+			Coste base por día: 21.00
+			Wifi: Si
+			Piscina: Si
+			Tipo: Chalet
+			Ubicación: Costa
+			Habitaciones: 2
+			Valoración: 5
